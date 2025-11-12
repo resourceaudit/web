@@ -1,14 +1,4 @@
 <svg width="294" height="313" viewBox="0 0 294 313" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <style>
-                        path, rect, circle, ellipse, line, polyline, polygon { 
-                            fill: currentColor;
-                        }
-                        @media (prefers-color-scheme: dark) {
-                            path, rect, circle, ellipse, line, polyline, polygon { 
-                                fill: #fff;
-                            }
-                        }
-                    </style>
 <path d="M294 0H0V313H294V0Z" fill="url(#pattern0_730_1347)"/>
 <defs>
 <pattern id="pattern0_730_1347" patternContentUnits="objectBoundingBox" width="1" height="1">
