@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from '/public/assets/logo.svg'
-import main1 from '/public/assets/main/main1.jpg'
-import main2 from '/public/assets/main/main2.jpg'
-import main3 from '/public/assets/main/main3.jpg'
-import main4 from '/public/assets/main/main4.jpeg'
-import main5 from '/public/assets/main/main5.jpg'
-import about1 from '/public/assets/about/about1.png'
-import about2 from '/public/assets/about/about2.png'
-import about3 from '/public/assets/about/about3.png'
-import about4 from '/public/assets/about/about4.png'
-import about5 from '/public/assets/about/about5.png'
-import cert from '/public/assets/about/fcca-certificate.png'
+
+import SectionHeader from "./SectionHeader";
+import ScrollToTopButton from "./ScrollToTopButton";
+import ContactsSection from "./ContactsSection";
+
+import logo from "/assets/logo.svg";
+import main1 from "/assets/main/main1.jpg";
+import main2 from "/assets/main/main2.jpg";
+import main3 from "/assets/main/main3.jpg";
+import main4 from "/assets/main/main4.jpeg";
+import main5 from "/assets/main/main5.jpg";
+import about1 from "/assets/about/about1.png";
+import about2 from "/assets/about/about2.png";
+import about3 from "/assets/about/about3.png";
+import about4 from "/assets/about/about4.png";
+import about5 from "/assets/about/about5.png";
+import cert from "/assets/about/fcca-certificate.png";
 
 export default function OnePager() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -124,12 +129,8 @@ export default function OnePager() {
   return (
     <div className="font-sans bg-gray-50 text-gray-800">
       {/* Header with mobile burger menu */}
-      <header className="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
-        <img
-          src={logo}
-          alt="Ресурс-Аудит логотип"
-          className="h-12 w-auto"
-        />
+      <header className="flex justify-between items-center p-4 bg-white shadow-md sticky top-0 z-50">
+        <img src={logo} alt="Ресурс-Аудит логотип" className="h-12 w-auto" />
         <nav className="hidden md:flex space-x-6">
           <a href="#about" className="hover:text-blue-600">
             Про нас
@@ -290,8 +291,8 @@ export default function OnePager() {
         {/* Scrollable gallery */}
         {/* <div className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory justify-start md:justify-center px-2"> */}
         <div
-          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 lg:px-10 lg:justify-center"
-          style={{ scrollPadding: "0 2rem" }}
+          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 lg:px-10 xl:justify-center"
+          // style={{ scrollPadding: "0 2rem" }}
         >
           {team.map((person, i) => (
             <motion.div
@@ -318,37 +319,37 @@ export default function OnePager() {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 bg-blue-50 rounded-2xl shadow-lg p-4 flex flex-col justify-center items-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <p className="text-gray-800 text-base mb-3">{person.text}</p>
-                  {person.cert && (
-                    <a
-                      href={person.cert}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      Переглянути сертифікат
-                    </a>
-                  )}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg p-6 flex flex-col justify-between text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div className="flex h-full flex-col justify-between">
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-800 mb-1">
+                        {person.name}
+                      </h4>
+                      <p className="text-sm text-gray-600 mb-4">
+                        {person.role}
+                      </p>
+                    </div>
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      {person.text}
+                    </p>
+                    {person.cert ? (
+                      <a
+                        href={person.cert}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-4 text-blue-700 font-medium hover:underline"
+                      >
+                        Переглянути сертифікат →
+                      </a>
+                    ) : (
+                      <div style={{ height: "64px" }} />
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <style>{`
-/* Hide scrollbar */
-.scrollbar-hide::-webkit-scrollbar {
-display: none;
-}
-.scrollbar-hide {
--ms-overflow-style: none;
-scrollbar-width: none;
-}
-.group:hover > div {
-transform: rotateY(180deg);
-}
-`}</style>
       </section>
 
       <section
@@ -434,8 +435,107 @@ transform: rotateY(180deg);
         </div>
       </section>
 
+      <ContactsSection />
+
       {/* Contacts */}
-      <section id="contacts" className="py-20 px-6 bg-gray-100 text-center">
+      {/* <section id="contacts" className="py-20 px-6 md:px-12 bg-gray-100">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+          // Left: Form 
+          <div>
+            <h2 className="text-4xl font-bold mb-2 text-gray-900">Контакти</h2>
+            <p className="uppercase text-sm tracking-widest text-gray-500 mb-8">
+              зв’яжіться з нами для співпраці або консультації
+            </p>
+
+            <form
+              action="https://formspree.io/f/xayvgxyz" // 🔗 replace with your actual Formspree endpoint
+              method="POST"
+              className="bg-white shadow-lg rounded-2xl p-8 space-y-4 text-left"
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Ваше ім’я"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Телефон"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <select
+                name="service"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <option value="">Оберіть послугу</option>
+                <option>Ініціативний аудит бізнесу</option>
+                <option>Аудит неприбуткового сегменту</option>
+                <option>Due diligence</option>
+                <option>Інше</option>
+              </select>
+              <textarea
+                name="message"
+                placeholder="Ваше повідомлення"
+                rows="4"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all"
+              >
+                Надіслати
+              </button>
+            </form>
+          </div>
+
+          // Right: Contact details 
+          <div className="flex flex-col justify-center bg-white shadow-lg rounded-2xl p-8 space-y-6 md:mt-[120px] lg:mt-[100px]">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              Зв’яжіться з нами напряму
+            </h3>
+            <div className="space-y-4 text-gray-700 text-lg">
+              <p>
+                <strong>Телефон:</strong>{" "}
+                <a
+                  href="tel:+380XXXXXXXXX"
+                  className="text-blue-600 hover:underline"
+                >
+                  +380 (XX) XXX-XX-XX
+                </a>
+              </p>
+              <p>
+                <strong>✉️ Email:</strong>{" "}
+                <a
+                  href="mailto:info@resource-audit.com"
+                  className="text-blue-600 hover:underline"
+                >
+                  info@resource-audit.com
+                </a>
+              </p>
+              <p>
+                <strong>🏢 Адреса:</strong> Київ, Україна
+              </p>
+            </div>
+
+            <div className="mt-6 border-t border-gray-200 pt-6 text-gray-500 text-sm">
+              Ми відповімо протягом одного робочого дня. <br/>Дякуємо, що обрали{" "}
+              <span className="font-semibold text-gray-800">Ресурс-Аудит</span>!
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* <section id="contacts" className="py-20 px-6 bg-gray-100 text-center">
         <h2 className="text-4xl font-semibold mb-6">Контакти</h2>
         <p className="text-lg mb-6">
           Зв’яжіться з нами, щоб дізнатися більше про наші послуги або почати
@@ -444,11 +544,25 @@ transform: rotateY(180deg);
         <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg transition-all">
           Написати нам
         </button>
-      </section>
+      </section> */}
+      <ScrollToTopButton />
       {/* Footer */}
       <footer className="py-6 text-center bg-gray-900 text-gray-300">
         <p>© {new Date().getFullYear()} Ресурс-Аудит. Всі права захищено.</p>
       </footer>
+      <style>{`
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+display: none;
+}
+.scrollbar-hide {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.group:hover > div {
+transform: rotateY(180deg);
+}
+`}</style>
     </div>
   );
 }
