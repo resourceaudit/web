@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from '/public/assets/logo.svg'
+import main1 from '/public/assets/main/main1.jpg'
+import main2 from '/public/assets/main/main2.jpg'
+import main3 from '/public/assets/main/main3.jpg'
+import main4 from '/public/assets/main/main4.jpeg'
+import main5 from '/public/assets/main/main5.jpg'
+import about1 from '/public/assets/about/about1.png'
+import about2 from '/public/assets/about/about2.png'
+import about3 from '/public/assets/about/about3.png'
+import about4 from '/public/assets/about/about4.png'
+import about5 from '/public/assets/about/about5.png'
+import cert from '/public/assets/about/fcca-certificate.png'
 
 export default function OnePager() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,23 +32,23 @@ export default function OnePager() {
     {
       title: "Ми Ефективні",
       text: 'В нас працюють знахідки як з "Big Four" так і з другого ешелону. Наша команда молода — а тому ефективна. Нас цікавить результат, а не маржа. Ми працюємо з неприбутковим сегментом і підтримуємо "work-life balance", що підвищує ефективність.',
-      img: "src/assets/main/main2.jpg",
+      img: main2,
     },
     {
       title: "Ми Швидкі",
       text: "Ми швидше інтегрували штучний інтелект, ніж регулятори визнали його інструментом. Тривіальну роботу тепер виконує ШІ — це означає швидший відгук і результати.",
-      img: "src/assets/main/main3.jpg",
+      img: main3,
     },
     {
       title: "Ми Прямі та Чесні",
       text: "Вас цікавить результат, а нас — гідна платня за досвід. Якщо ви чогось не знаєте — ми навчимо. Ми не приховуємо істину: навчаємо створювати звітність, яка приносить реальну користь.",
-      img: "src/assets/main/main4.jpeg",
+      img: main4,
     },
     {
       title:
         "Наші працівники, партнери та підрядники - всі мають гуманітарну місію!",
       text: 'Коли Ви звертаєтесь до "Ресурс-аудит", ми знаходимо ресурс, ефективний, швидкий, прямий. І ми розуміємо всі ваші візії. Наша діяльність - благодійна там, де ми можемо прикласти наш досвід та навички. Це там де ми корисні. Коли фінансист гукає "Так а як я здам річний звіт" - Ресурс аудит готовий бути поряд, бо ми розуміємо.',
-      img: "src/assets/main/main5.jpg",
+      img: main5,
     },
   ];
 
@@ -45,32 +57,32 @@ export default function OnePager() {
       name: "Нікіфоренко Микола",
       role: "Генеральний директор",
       text: "Понад 25 років стажу. Присяжний член IFAC, один із творців Аудиторської палати України. Почесний член ФПБАУ та САУ.",
-      img: "src/assets/about/about1.png",
+      img: about1,
     },
     {
       name: "Гаврилова Олена",
       role: "Менеджерка з аудиту",
       text: "Понад 20 років стажу в аудиті. Спеціаліст з податкового обліку, емітентів та неприбуткових організацій. Почесна членкиня САУ та ФПБАУ.",
-      img: "src/assets/about/about2.png",
+      img: about2,
     },
     {
       name: "Воят Олександр",
       role: "Директор департаменту аудиту",
       text: "Понад 10 років досвіду. Почесний член ФПБАУ та САУ. Сертифікований член АССА (FCCA).",
-      img: "src/assets/about/about3.png",
-      cert: "src/assets/about/fcca-certificate.png",
+      img: about3,
+      cert: cert,
     },
     {
       name: "Кузь Анастасія",
       role: "Головна аудиторка",
       text: "Понад 15 років стажу. Сертифікації CPA, DIPIFR (ACCA), SIMA.",
-      img: "src/assets/about/about4.png",
+      img: about4,
     },
     {
       name: "Голуб Сергій",
       role: "Контролер якості",
       text: "Більше 20 років досвіду у сфері фінансів та аудиту, включаючи керуючий досвід у «Великій Четвірці». Сертифікат FCCA.",
-      img: "src/assets/about/about5.png",
+      img: about5,
     },
   ];
 
@@ -114,7 +126,7 @@ export default function OnePager() {
       {/* Header with mobile burger menu */}
       <header className="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
         <img
-          src="src/assets/logo.svg"
+          src={logo}
           alt="Ресурс-Аудит логотип"
           className="h-12 w-auto"
         />
@@ -179,7 +191,7 @@ export default function OnePager() {
         {/* Background image with dark overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('src/assets/main/main1.jpg')" }}
+          style={{ backgroundImage: `url(${main1})` }}
         ></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
@@ -241,7 +253,7 @@ export default function OnePager() {
               src={block.img}
               alt={block.title}
               className={`w-full md:w-1/2 ${
-                i === 3 ? "h-96 md:h-[460px]" : "h-64 md:h-72"
+                i === 3 ? "h-96 xl:h-[400px] md:h-[460px]" : "h-64 md:h-72"
               } object-cover object-center`}
             />
             <div className="p-6 md:w-1/2 text-center md:text-left md:px-8">
